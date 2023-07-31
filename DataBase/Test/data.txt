@@ -1,0 +1,127 @@
+Shows a table:
+SELECT *
+FROM faculty;
+
+SELECT *
+FROM course;
+
+Show files: 
+cat Northwoods_mySQL_working.sql 
+
+Shows the fields wthin a table:
+describe faculty;
+
+Shows the coulums within a table:
+SELECT f_last, f_frist
+FROM faculty;
+
+Shows selection of rows: 
+SELECT f_last, f_frist --(projection/columns)
+FROM faculty
+WHERE f_Rank= "full"; -- WHERE clause (selection/rows)
+
+Remove duplicates: 
+SELECT DISTINCT
+
+/*multi line comment
+**********/
+-- single line comment 
+
+Group functions:
+SELECT COUNT(*) -- counts all  the rows 
+
+--NULL is a value that holds not value;
+-- Find null:
+SELECT *
+FROM enrollment 
+WHERE grade IS NULL;
+
+--Find not null:
+SELECT *
+FROM enrollment 
+WHERE grade IS NOT NULL;
+
+--SUM,MAX,MIN,AVG (other group functions)
+
+SELECT SUM(max_enrl) --SUM adding number of rows
+FROM course_section;
+
+SELECT COUNT(max_enrl) --COUNT counting number of rows 
+FROM course_section;
+
+SELECT MAX(max_enrl), MIN(max_enrl), AVG(max_enrl)
+FROM course_section;
+
+--BETWEEN operator - for values within a certain range
+
+SELECT *
+FROM student
+WHERE s_dob >= '1986-01-01' AND 
+s_dob <= '1906-12-31';
+
+SELECT *
+FROM student
+WHERE s_dob BETWEEN '1986-01-01' AND 
+ '1906-12-31';
+
+SELECT *
+FROM student
+WHERE s_dob NOT BETWEEN '1986-01-01' AND 
+ '1906-12-31';
+
+-- LIKE operator - mainly used for strings patterns
+--wild cards %_ 
+--% Zero or many number of characters are substitued 
+-- _ one and only character 
+
+SELECT s_last
+FROM student
+WHERE s_last = 'Connoly';
+
+
+SELECT s_last
+FROM student
+WHERE s_last = 'Connoly' OR s_last='Mobley';
+
+SELECT s_last
+FROM student
+WHERE s_last LIKE '%y';--ends with a 'y'
+
+SELECT s_last
+FROM student
+WHERE s_last LIKE 'y%'; --begin with a 'y'
+--'Case senstive'
+
+SELECT s_last
+FROM student
+WHERE s_last LIKE '%y%'; -- anywhere with 'y'
+
+SELECT s_last
+FROM student
+WHERE s_last LIKE 'M%y'; -- begins with 'M' and ends with 'y'
+
+SELECT s_last
+FROM student
+WHERE s_last NOT LIKE 'M%y';
+
+-- IN operator --deals with sets
+
+SELECT *
+FROM enrollnment 
+WHERE grade='A' OR grade='C';
+
+SELECT *
+FROM enrollnment 
+WHERE grade IN ('A', 'C');
+
+SELECT *
+FROM enrollnment 
+WHERE grade NOT IN ('A', 'C');
+
+-- artihmetic operators + ,/, *, - 
+--comparision  =, !=, >=, <= , <,>, <>
+--Logical AND , NOT
+
+-- example for forcasting using arithmetic operator - here + adding 
+SELECT max_enrl FROM course_section;
+
